@@ -52,13 +52,23 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Página inicial</a></li>
-                        <li><a runat="server" href="~/About">Sobre</a></li>
-                        <li><a runat="server" href="~/Contact">Contato</a></li>
+                        <li><a runat="server" href="~/Paginas/Clientes/Listagem.aspx">Clientes</a></li>
+                        <li><a runat="server" href="~/Paginas/Usuarios/Listagem.aspx">Usuarios</a></li>
+                        <li><a runat="server" href="~/Paginas/Servicos/Listagem.aspx">Serviços</a></li>
+                        <li><a runat="server" href="~/Paginas/OrdemServicos/Listagem.aspx">Ordem Serviço</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container body-content">
+            <div style="margin-top:30px">
+                <div class="alert alert-success" role="alert" runat="server" id="divAlertaSucesso" visible="false">
+                    <%= textoSucesso %>
+                </div>
+                <div class="alert alert-danger" role="alert" runat="server" id="divAlertaDanger" visible="false">
+                    <%= textoErro %>
+                </div>
+            </div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

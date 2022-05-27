@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
-
+using Trabalho_2_webForms.Dominio.Entidades;
+using static Trabalho_2_webForms.Dominio.Infra.RepositorioSingleton;
 namespace Trabalho_2_webForms
 {
     public class Global : HttpApplication
@@ -16,6 +13,15 @@ namespace Trabalho_2_webForms
             // Código que é executado na inicialização do aplicativo
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AdicionarDadosIniciais();
+        }
+
+        private void AdicionarDadosIniciais()
+        {
+            if (!ClienteRepositorio.PossuiRegistro())
+            {
+                ClienteRepositorio.Adiciona(new Cliente() { CPF = "0000000000", DataNascimento = DateTime.Now.AddYears(-30), Endereco = "ssssssss, 2222, 555", Nome="Ramon", Telefone="(54) 99999-9999" });
+            }
         }
     }
 }

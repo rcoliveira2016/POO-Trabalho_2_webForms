@@ -14,5 +14,26 @@ namespace Trabalho_2_webForms.Dominio.Entidades
         public string Telefone { get; set; }
         public virtual ICollection<OrdemServico> OrdensServicos { get; set; }
 
+        public override string DescricaoCombo => Nome;
+
+        public override bool ValidarDados(out List<string> mensagens)
+        {
+            if (!base.ValidarDados(out mensagens))
+            {
+                return false;
+            }
+
+            ValidarCampo(mensagens, CPF, "CPF");
+
+            ValidarCampo(mensagens, Nome, "Nome");
+
+            ValidarCampo(mensagens, Endereco, "Endereço");
+
+            ValidarCampo(mensagens, Telefone, "Telefone");
+
+            ValidarCampo(mensagens, DataNascimento, "Data de nascimaneto");
+
+            return !mensagens.Any();
+        }
     }
 }

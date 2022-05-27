@@ -28,6 +28,14 @@ namespace Trabalho_2_webForms.Dominio.Data
             return prod;
         }
 
+        public void Salvar(T o)
+        {
+            if (o.RegistroNovo)
+                Adiciona(o);
+            else
+                Alterar(o);
+        }
+
         public long Adiciona(T o)
         {
             DbSet.Add(o);
@@ -38,7 +46,7 @@ namespace Trabalho_2_webForms.Dominio.Data
             return codigo;
         }
 
-        public void Alterar(Cliente o)
+        public void Alterar(T o)
         {
             bd.Entry(o).State = System.Data.Entity.EntityState.Modified;
             bd.SaveChanges();
@@ -59,6 +67,11 @@ namespace Trabalho_2_webForms.Dominio.Data
 
             return todos;
 
+        }
+
+        public bool PossuiRegistro()
+        {
+            return DbSet.ToList().Any();
         }
     }
 }

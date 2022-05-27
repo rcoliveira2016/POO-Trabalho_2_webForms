@@ -12,5 +12,22 @@ namespace Trabalho_2_webForms.Dominio.Entidades
         public string Senha { get; set; }
         public virtual ICollection<OrdemServico> OrdensServicos { get; set; }
 
+        public override string DescricaoCombo => NomeCompleto;
+
+        public override bool ValidarDados(out List<string> mensagens)
+        {
+            if (!base.ValidarDados(out mensagens))
+            {
+                return false;
+            }
+
+            ValidarCampo(mensagens, NomeCompleto, "Nome completo");
+
+            ValidarCampo(mensagens, Login, "Login");
+
+            ValidarCampo(mensagens, Senha, "Senha");
+
+            return !mensagens.Any();
+        }
     }
 }
