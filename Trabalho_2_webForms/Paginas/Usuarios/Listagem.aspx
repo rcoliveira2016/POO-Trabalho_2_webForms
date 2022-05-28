@@ -4,7 +4,7 @@
         <legend><%: Title %></legend>
         <div class="row">
             <div class="col-12">
-                <a runat="server" class="btn btn-btn-default" href="~/Paginas/Clientes/Cadastro.aspx">Novo Usuario</a>
+                <a runat="server" class="btn btn-btn-default" href="~/Paginas/Usuarios/Cadastro.aspx">Novo Usuario</a>
             </div>
         </div>
         <asp:GridView ID="grdDados" 

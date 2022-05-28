@@ -16,7 +16,7 @@ namespace Trabalho_2_webForms.Paginas.OrdemServicos
 
         private void CarregarListagem()
         {
-            grdDados.CarregarDadosGrid(ServicoRepositorio);
+            grdDados.CarregarDadosGrid(OrdemServicoRepositorio);
         }
 
         protected void grdDados_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -24,7 +24,7 @@ namespace Trabalho_2_webForms.Paginas.OrdemServicos
             TratarErro(() =>
             {
                 var codigo = Convert.ToInt64(e.Values[0]);
-                ServicoRepositorio.Deletar(codigo);
+                OrdemServicoRepositorio.Deletar(codigo);
                 AdicionarTextoSucesso("serviço excluido com sucesso");
                 CarregarListagem();
             });
@@ -34,7 +34,7 @@ namespace Trabalho_2_webForms.Paginas.OrdemServicos
         {
             TratarErro(() =>
             {
-                grdDados.RedirecionarPaginaCadastro(e, Response, "Servicos");
+                grdDados.RedirecionarPaginaCadastro(e, Response, "OrdemServicos");
             });
         }
     }

@@ -17,9 +17,11 @@
             CssClass="table table-striped table-bordered">
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Codigo" />
-                <asp:BoundField DataField="Nome" HeaderText="Nome" />
-                <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
-                <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitario" />
+                <asp:BoundField DataField="ClienteDescricao" HeaderText="Cliente" />
+                <asp:BoundField DataField="UsuarioDescricao" HeaderText="Usuário" />
+                <asp:BoundField DataField="ServicoDescricao" HeaderText="Serviço" />
+                <asp:BoundField DataField="ValorTotal" HeaderText="Valor" />
+                <asp:BoundField DataField="DataAbertura" HeaderText="Data da abertura" />
             </Columns>
         </asp:GridView>
     </fieldset>

@@ -18,10 +18,7 @@ namespace Trabalho_2_webForms
 
         private void AdicionarDadosIniciais()
         {
-            if (!ClienteRepositorio.PossuiRegistro())
-            {
-                ClienteRepositorio.Adiciona(new Cliente() { CPF = "0000000000", DataNascimento = DateTime.Now.AddYears(-30), Endereco = "ssssssss, 2222, 555", Nome="Ramon", Telefone="(54) 99999-9999" });
-            }
+           
         }
     }
 }

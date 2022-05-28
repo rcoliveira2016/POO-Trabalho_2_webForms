@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class inicial : DbMigration
+    public partial class INicial : DbMigration
     {
         public override void Up()
         {
@@ -28,13 +28,11 @@
                         IdCliente = c.Long(nullable: false),
                         IdUsuario = c.Long(nullable: false),
                         IdServico = c.Long(nullable: false),
-                        IdPagamento = c.Long(nullable: false),
                         Unitario = c.Int(nullable: false),
                         DataAbertura = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cliente", t => t.IdCliente, cascadeDelete: true)
-                .ForeignKey("dbo.Pagamento", t => t.IdUsuario, cascadeDelete: true)
                 .ForeignKey("dbo.Servico", t => t.IdServico, cascadeDelete: true)
                 .ForeignKey("dbo.Usuario", t => t.IdUsuario, cascadeDelete: true)
                 .Index(t => t.IdCliente)
@@ -45,26 +43,28 @@
                 "dbo.Pagamento",
                 c => new
                     {
-                        Id = c.Long(nullable: false, identity: true),
+                        Id = c.Long(nullable: false),
                         IdFormaPagamento = c.Long(nullable: false),
                         ValorTotal = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.FormaPagamento", t => t.IdFormaPagamento, cascadeDelete: true)
-                .Index(t => t.IdFormaPagamento);
+                .ForeignKey("dbo.OrdemServico", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.FormaPagamento",
                 c => new
                     {
-                        Id = c.Long(nullable: false, identity: true),
+                        Id = c.Long(nullable: false),
                         Tipo = c.Int(nullable: false),
                         CodigoPix = c.String(),
                         CodigoBarra = c.String(),
                         NumeroCartão = c.String(),
                         CodigoSegurança = c.String(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Pagamento", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Servico",
@@ -94,10 +94,11 @@
         {
             DropForeignKey("dbo.OrdemServico", "IdUsuario", "dbo.Usuario");
             DropForeignKey("dbo.OrdemServico", "IdServico", "dbo.Servico");
-            DropForeignKey("dbo.OrdemServico", "IdUsuario", "dbo.Pagamento");
-            DropForeignKey("dbo.Pagamento", "IdFormaPagamento", "dbo.FormaPagamento");
+            DropForeignKey("dbo.Pagamento", "Id", "dbo.OrdemServico");
+            DropForeignKey("dbo.FormaPagamento", "Id", "dbo.Pagamento");
             DropForeignKey("dbo.OrdemServico", "IdCliente", "dbo.Cliente");
-            DropIndex("dbo.Pagamento", new[] { "IdFormaPagamento" });
+            DropIndex("dbo.FormaPagamento", new[] { "Id" });
+            DropIndex("dbo.Pagamento", new[] { "Id" });
             DropIndex("dbo.OrdemServico", new[] { "IdServico" });
             DropIndex("dbo.OrdemServico", new[] { "IdUsuario" });
             DropIndex("dbo.OrdemServico", new[] { "IdCliente" });

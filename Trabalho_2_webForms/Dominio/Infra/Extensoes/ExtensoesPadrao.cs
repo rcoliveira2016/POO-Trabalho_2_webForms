@@ -48,6 +48,10 @@ namespace Trabalho_2_webForms.Dominio.Infra.Extensoes
         {
             return long.TryParse(txt.Text, out valor);
         }
+        public static bool TentarObterInt(this TextBox txt, out int valor)
+        {
+            return int.TryParse(txt.Text, out valor);
+        }
         public static bool TentarObterDouble(this TextBox txt, out double valor)
         {
             return double.TryParse(txt.Text, out valor);

@@ -28,8 +28,7 @@ namespace Trabalho_2_webForms.Dominio.Context.Map
                 .HasForeignKey(p => p.IdUsuario);
 
             HasRequired(c => c.Pagamento)
-                .WithMany(x => x.OrdensServicos)
-                .HasForeignKey(p => p.IdUsuario);
+                .WithRequiredPrincipal(x => x.OrdemServico);
         }
     }
 }

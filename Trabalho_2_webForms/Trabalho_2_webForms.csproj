@@ -224,13 +224,18 @@
     <Compile Include="Dominio\Entidades\Servico.cs" />
     <Compile Include="Dominio\Entidades\Usuario.cs" />
     <Compile Include="Dominio\Infra\Extensoes\ExtensoesPadrao.cs" />
-    <Compile Include="Dominio\Infra\RepositorioSingleton.cs" />
+    <Compile Include="Dominio\Infra\Singleton\BancoDadosContextoSingleton.cs" />
+    <Compile Include="Dominio\Infra\Singleton\RepositorioSingleton.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205200051462_inicial.cs" />
-    <Compile Include="Migrations\202205200051462_inicial.designer.cs">
-      <DependentUpon>202205200051462_inicial.cs</DependentUpon>
+    <Compile Include="Migrations\202205281624058_INicial.cs" />
+    <Compile Include="Migrations\202205281624058_INicial.designer.cs">
+      <DependentUpon>202205281624058_INicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205281639233_INicial_2.cs" />
+    <Compile Include="Migrations\202205281639233_INicial_2.designer.cs">
+      <DependentUpon>202205281639233_INicial_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Paginas\Clientes\Cadastro.aspx.cs">
@@ -248,6 +253,9 @@
       <DependentUpon>Listagem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Common\PaginaBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Common\PaginaCadastroBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Paginas\OrdemServicos\Cadastro.aspx.cs">
@@ -316,11 +324,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205200051462_inicial.resx">
-      <DependentUpon>202205200051462_inicial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
@@ -331,7 +334,14 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202205281624058_INicial.resx">
+      <DependentUpon>202205281624058_INicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205281639233_INicial_2.resx">
+      <DependentUpon>202205281639233_INicial_2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

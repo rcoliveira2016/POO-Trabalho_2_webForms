@@ -7,9 +7,25 @@ namespace Trabalho_2_webForms.Dominio.Entidades
 {
     public class Pagamento: Entidade
     {        
-        public virtual ICollection<OrdemServico> OrdensServicos { get; set; }
-        public long IdFormaPagamento { get; set; }
+        public virtual OrdemServico OrdemServico { get; set; }
         public virtual FormaPagamento FormaPagamento { get; set; }
         public double ValorTotal { get; set; }
+
+        public static Pagamento Criar() => new Pagamento() { FormaPagamento = new FormaPagamento() };
+
+        public override bool ValidarDados(out List<string> mensagens)
+        {
+            if (!base.ValidarDados(out mensagens))
+            {
+                return false;
+            }
+
+            ValidarCampo(mensagens, ValorTotal, "Valor Total");
+
+            FormaPagamento.ValidarDados(out var mensagensFormas);
+
+            mensagens.AddRange(mensagensFormas);
+            return !mensagens.Any();
+        }
     }
 }
